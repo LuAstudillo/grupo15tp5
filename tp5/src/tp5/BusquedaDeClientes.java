@@ -4,17 +4,30 @@
  */
 package tp5;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Luly2
  */
 public class BusquedaDeClientes extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form BusquedaDeCientes
-     */
-    public BusquedaDeClientes() {
+    
+    private Directorio directorio;
+    
+    public BusquedaDeClientes(Directorio directorio) {
         initComponents();
+        this.directorio = directorio;
+        llenarListaTelefonos();
+    }
+    private void llenarListaTelefonos(){
+        DefaultListModel<Long>  modelo = new DefaultListModel();
+        
+        for(Long telefono : directorio.getTelefonos()){
+            modelo.addElement(telefono);
+        }
+
+        jListTelefonos.setModel(modelo);
     }
 
     /**
@@ -26,7 +39,7 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLtitulo = new javax.swing.JLabel();
         jLtelefono = new javax.swing.JLabel();
         jTFtelef = new javax.swing.JTextField();
         jLdni = new javax.swing.JLabel();
@@ -41,10 +54,10 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
         jTFciudad = new javax.swing.JTextField();
         jTFdomicilio = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jListTelefonos = new javax.swing.JList<>();
 
-        jLabel1.setFont(new java.awt.Font("MingLiU-ExtB", 1, 18)); // NOI18N
-        jLabel1.setText("Busqueda de Clientes");
+        jLtitulo.setFont(new java.awt.Font("MingLiU-ExtB", 1, 18)); // NOI18N
+        jLtitulo.setText("Busqueda de Clientes");
 
         jLtelefono.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLtelefono.setText("Telefono:");
@@ -73,12 +86,8 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
 
         jTFciudad.addActionListener(this::jTFciudadActionPerformed);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jListTelefonos.addListSelectionListener(this::jListTelefonosValueChanged);
+        jScrollPane1.setViewportView(jListTelefonos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,70 +96,76 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(128, 128, 128)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(82, 82, 82)
-                                        .addComponent(jScrollPane1))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(jLtelefono)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTFtelef, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(57, 57, 57)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLnombre)
-                                    .addComponent(jLapellido)
-                                    .addComponent(jLciudad)
-                                    .addComponent(jLdomicilio)
-                                    .addComponent(jLdni))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTFdni, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
-                            .addComponent(jTFapellido)
-                            .addComponent(jTFnombre, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTFciudad)
-                            .addComponent(jTFdomicilio)))
+                        .addGap(128, 128, 128)
+                        .addComponent(jLtitulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jBsalir)
-                        .addGap(51, 51, 51)))
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLtelefono)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTFtelef, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLdomicilio)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTFdomicilio, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLciudad)
+                                .addGap(26, 26, 26)
+                                .addComponent(jTFciudad))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLnombre)
+                                    .addComponent(jLdni)
+                                    .addComponent(jLapellido))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFdni)
+                                    .addComponent(jTFapellido)
+                                    .addComponent(jTFnombre))))))
                 .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
+                .addComponent(jLtitulo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLnombre)
-                            .addComponent(jTFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLciudad)
-                            .addComponent(jTFciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLdomicilio))
-                    .addComponent(jTFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLtelefono)
-                            .addComponent(jTFtelef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLdni)
-                            .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTFtelef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLapellido)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLapellido)
+                                    .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLnombre)
+                                    .addComponent(jTFnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFciudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLciudad)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLdni))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLdomicilio))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jBsalir)
                 .addContainerGap())
         );
@@ -171,20 +186,37 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFciudadActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
+
+    private void jListTelefonosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jListTelefonosValueChanged
+       if(!evt.getValueIsAdjusting()){
+           Long telefono = jListTelefonos.getSelectedValue();
+           if(telefono != null){
+               Contacto contacto = directorio.buscarContacto(telefono);
+               
+               long dni = contacto.getDni();
+               jTFdni.setText(String.valueOf(dni));
+               jTFapellido.setText(contacto.getApellido());
+               jTFnombre.setText(contacto.getNombre());
+               jTFciudad.setText(contacto.getCiudad());
+               jTFdomicilio.setText(contacto.getDireccion());
+           }
+       
+    }
+    }//GEN-LAST:event_jListTelefonosValueChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBsalir;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLapellido;
     private javax.swing.JLabel jLciudad;
     private javax.swing.JLabel jLdni;
     private javax.swing.JLabel jLdomicilio;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<Long> jListTelefonos;
     private javax.swing.JLabel jLnombre;
     private javax.swing.JLabel jLtelefono;
+    private javax.swing.JLabel jLtitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTFapellido;
     private javax.swing.JTextField jTFciudad;

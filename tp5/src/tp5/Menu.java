@@ -13,13 +13,12 @@ import java.awt.Color;
 public class Menu extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
-
-    /**
-     * Creates new form Menu
-     */
+    
+    Directorio directorio = new Directorio();
     public Menu() {
         initComponents();
         this.getContentPane().setBackground(new Color(51, 102, 153));
+        
     }
 
     /**
@@ -126,8 +125,8 @@ public class Menu extends javax.swing.JFrame {
 
     private void jItAgClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItAgClienteActionPerformed
         escritorio.removeAll();
-        AgregarCliente ac = new AgregarCliente();
-       ac .setVisible(true);
+        AgregarCliente ac = new AgregarCliente(directorio);
+       ac.setVisible(true);
         escritorio.add(ac);
         escritorio.moveToFront(ac);
         escritorio.revalidate();
@@ -137,7 +136,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jItbusClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItbusClienteActionPerformed
          escritorio.removeAll();
-        BusquedaDeClientes bdc = new BusquedaDeClientes();
+        BusquedaDeClientes bdc = new BusquedaDeClientes(directorio);
         bdc.setVisible(true);
         escritorio.add(bdc);
         escritorio.moveToFront(bdc);

@@ -11,12 +11,13 @@ import javax.swing.JOptionPane;
  * @author Luly2
  */
 public class AgregarCliente extends javax.swing.JInternalFrame {
-    Directorio directorio = new Directorio();
+    private Directorio directorio;
     /**
      * Creates new form AgregarCliente
      */
-    public AgregarCliente() {
+    public AgregarCliente(Directorio directorio) {
         initComponents();
+        this.directorio=directorio;
     }
 
     /**

@@ -20,6 +20,9 @@ public class Directorio {
     public Contacto buscarContacto(Long telefono){
         return listaContactos.get(telefono);
     }
+    public Set<Long> getTelefonos(){
+        return listaContactos.keySet();
+    }
     public Set<Long> telefonos = new java.util.HashSet<>();
     //c
     
