@@ -60,8 +60,8 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jTFapellidoo" max="32767" attributes="0"/>
                                   <Component id="jTFdni" max="32767" attributes="0"/>
-                                  <Component id="jTFapellido" max="32767" attributes="0"/>
                                   <Component id="jTFnombre" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -88,7 +88,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLapellido" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTFdni" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFapellidoo" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -106,7 +106,7 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jTFapellido" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTFdni" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLdni" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -190,14 +190,14 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBsalirActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JTextField" name="jTFapellidoo">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFapellidooActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JTextField" name="jTFdni">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFdniActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTFapellido">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFapellidoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="jTFnombre">

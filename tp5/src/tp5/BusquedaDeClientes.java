@@ -48,8 +48,8 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
         jLciudad = new javax.swing.JLabel();
         jLdomicilio = new javax.swing.JLabel();
         jBsalir = new javax.swing.JButton();
+        jTFapellidoo = new javax.swing.JTextField();
         jTFdni = new javax.swing.JTextField();
-        jTFapellido = new javax.swing.JTextField();
         jTFnombre = new javax.swing.JTextField();
         jTFciudad = new javax.swing.JTextField();
         jTFdomicilio = new javax.swing.JTextField();
@@ -80,9 +80,9 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
         jBsalir.setText("Salir");
         jBsalir.addActionListener(this::jBsalirActionPerformed);
 
-        jTFdni.addActionListener(this::jTFdniActionPerformed);
+        jTFapellidoo.addActionListener(this::jTFapellidooActionPerformed);
 
-        jTFapellido.addActionListener(this::jTFapellidoActionPerformed);
+        jTFdni.addActionListener(this::jTFdniActionPerformed);
 
         jTFciudad.addActionListener(this::jTFciudadActionPerformed);
 
@@ -127,8 +127,8 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
                                     .addComponent(jLapellido))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTFapellidoo)
                                     .addComponent(jTFdni)
-                                    .addComponent(jTFapellido)
                                     .addComponent(jTFnombre))))))
                 .addGap(26, 26, 26))
         );
@@ -147,7 +147,7 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLapellido)
-                                    .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTFapellidoo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLnombre)
@@ -159,7 +159,7 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTFapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLdni))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -173,13 +173,13 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTFapellidooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFapellidooActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTFapellidooActionPerformed
+
     private void jTFdniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFdniActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFdniActionPerformed
-
-    private void jTFapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFapellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTFapellidoActionPerformed
 
     private void jTFciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFciudadActionPerformed
         // TODO add your handling code here:
@@ -196,8 +196,8 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
                Contacto contacto = directorio.buscarContacto(telefono);
                
                long dni = contacto.getDni();
+               jTFapellidoo.setText(contacto.getApellido());
                jTFdni.setText(String.valueOf(dni));
-               jTFapellido.setText(contacto.getApellido());
                jTFnombre.setText(contacto.getNombre());
                jTFciudad.setText(contacto.getCiudad());
                jTFdomicilio.setText(contacto.getDireccion());
@@ -218,7 +218,7 @@ public class BusquedaDeClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLtelefono;
     private javax.swing.JLabel jLtitulo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTFapellido;
+    private javax.swing.JTextField jTFapellidoo;
     private javax.swing.JTextField jTFciudad;
     private javax.swing.JTextField jTFdni;
     private javax.swing.JTextField jTFdomicilio;
