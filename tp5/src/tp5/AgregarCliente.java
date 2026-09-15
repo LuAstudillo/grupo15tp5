@@ -4,12 +4,14 @@
  */
 package tp5;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luly2
  */
 public class AgregarCliente extends javax.swing.JInternalFrame {
-
+    Directorio directorio = new Directorio();
     /**
      * Creates new form AgregarCliente
      */
@@ -41,7 +43,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         jTFnombre = new javax.swing.JTextField();
         jTFapellido = new javax.swing.JTextField();
         jTFdomicilio = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCboxCiudad = new javax.swing.JComboBox<>();
         jTFtelefono = new javax.swing.JTextField();
         jBsalir = new javax.swing.JButton();
         jBguardar = new javax.swing.JButton();
@@ -73,7 +75,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
 
         jTFapellido.addActionListener(this::jTFapellidoActionPerformed);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTFtelefono.addActionListener(this::jTFtelefonoActionPerformed);
 
@@ -123,7 +125,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(20, 20, 20)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jCboxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(89, 89, 89))))
@@ -165,7 +167,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLciudad)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCboxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLdomicilio)
@@ -201,18 +203,28 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTFtelefonoActionPerformed
 
     private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
-        // TODO add your handling code here:
+      dispose();
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        // TODO add your handling code here:
+        Long telefono = Long.parseLong(jTFtelefono.getText());
+
+    Contacto contacto = new Contacto(
+        Long.parseLong(jTFdni.getText()),
+        jTFnombre.getText(),
+        jTFapellido.getText(),
+        jCboxCiudad.getSelectedItem().toString(),
+        jTFdomicilio.getText()
+    );
+    directorio.agregarContacto(telefono, contacto);
+    JOptionPane.showMessageDialog(this, "Contacto agregado");
     }//GEN-LAST:event_jBguardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBguardar;
     private javax.swing.JButton jBsalir;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCboxCiudad;
     private javax.swing.JLabel jLagCliente;
     private javax.swing.JLabel jLapellido;
     private javax.swing.JLabel jLciudad;
