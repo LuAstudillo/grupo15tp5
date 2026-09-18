@@ -91,6 +91,15 @@ public class AgregarCiudad extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        String ciudad = jTextField1.getText().trim();
+        if(ciudad.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe ingresar el nombre de una ciudad.");
+            return;
+        }
+        Menu.ciudades.add(ciudad);
+        javax.swing.JOptionPane.showMessageDialog(this, "Ciudad Agregada!");
+        jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

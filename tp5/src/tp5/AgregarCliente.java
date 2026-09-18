@@ -11,15 +11,21 @@ import javax.swing.JOptionPane;
  * @author Luly2
  */
 public class AgregarCliente extends javax.swing.JInternalFrame {
-    private Directorio directorio;
     /**
      * Creates new form AgregarCliente
      */
-    public AgregarCliente(Directorio directorio) {
+    public AgregarCliente() {
         initComponents();
-        this.directorio=directorio;
+        
     }
 
+    private void llenarComboCiudades(){
+        jCboxCiudad.removeAllItems();
+        for(String c : Menu.ciudades){
+            jCboxCiudad.addItem(c);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -75,8 +81,6 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
         jTFnombre.addActionListener(this::jTFnombreActionPerformed);
 
         jTFapellido.addActionListener(this::jTFapellidoActionPerformed);
-
-        jCboxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTFtelefono.addActionListener(this::jTFtelefonoActionPerformed);
 

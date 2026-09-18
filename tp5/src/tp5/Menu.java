@@ -12,13 +12,16 @@ import java.awt.Color;
  */
 public class Menu extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
+    //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
+    public static Directorio directorio = new Directorio();
+    public static java.util.TreeSet<String> ciudades = new java.util.TreeSet<>();
     
-    Directorio directorio = new Directorio();
     public Menu() {
         initComponents();
         this.getContentPane().setBackground(new Color(51, 102, 153));
-        
+        ciudades.add("San Luis");
+        ciudades.add("Merlo");
+        ciudades.add("Villa Mercedes");
     }
 
     /**
@@ -116,8 +119,8 @@ public class Menu extends javax.swing.JFrame {
     private void jItborrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItborrarClienteActionPerformed
      escritorio.removeAll();
         BorrarCliente bc = new BorrarCliente();
-        bc.setVisible(true);
         escritorio.add(bc);
+        bc.setVisible(true);
         escritorio.moveToFront(bc);
         escritorio.revalidate();
         escritorio.repaint();
@@ -126,8 +129,8 @@ public class Menu extends javax.swing.JFrame {
     private void jItAgClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItAgClienteActionPerformed
         escritorio.removeAll();
         AgregarCliente ac = new AgregarCliente(directorio);
-       ac.setVisible(true);
         escritorio.add(ac);
+        ac.setVisible(true);
         escritorio.moveToFront(ac);
         escritorio.revalidate();
         escritorio.repaint();
@@ -137,8 +140,8 @@ public class Menu extends javax.swing.JFrame {
     private void jItbusClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItbusClienteActionPerformed
          escritorio.removeAll();
         BusquedaDeClientes bdc = new BusquedaDeClientes(directorio);
-        bdc.setVisible(true);
         escritorio.add(bdc);
+        bdc.setVisible(true);
         escritorio.moveToFront(bdc);
         escritorio.revalidate();
         escritorio.repaint();
@@ -148,8 +151,8 @@ public class Menu extends javax.swing.JFrame {
     private void jItbusClientporCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItbusClientporCiudadActionPerformed
         escritorio.removeAll();
         BusqClienteDirectorioPorCiudad bcdc = new BusqClienteDirectorioPorCiudad();
-        bcdc.setVisible(true);
         escritorio.add(bcdc);
+        bcdc.setVisible(true);
         escritorio.moveToFront(bcdc);
         escritorio.revalidate();
         escritorio.repaint();
@@ -160,8 +163,8 @@ public class Menu extends javax.swing.JFrame {
     private void jItagregarCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItagregarCiudadActionPerformed
         escritorio.removeAll();
         AgregarCiudad agC = new AgregarCiudad();
-        agC.setVisible(true);
         escritorio.add(agC);
+        agC.setVisible(true);
         escritorio.moveToFront(agC);
         escritorio.revalidate();
         escritorio.repaint();
@@ -171,8 +174,8 @@ public class Menu extends javax.swing.JFrame {
     private void jItbusTelporApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItbusTelporApellidoActionPerformed
         escritorio.removeAll();
         BuscarTelefonoPorApellido bta = new BuscarTelefonoPorApellido();
-        bta.setVisible(true);
         escritorio.add(bta);
+        bta.setVisible(true);
         escritorio.moveToFront(bta);
         escritorio.revalidate();
         escritorio.repaint();
