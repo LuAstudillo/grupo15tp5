@@ -16,7 +16,7 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
      */
     public AgregarCliente() {
         initComponents();
-        
+        llenarComboCiudades();
     }
 
     private void llenarComboCiudades(){
@@ -98,48 +98,40 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBguardar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jBsalir)
-                        .addGap(15, 15, 15))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLnombre)
+                            .addComponent(jLapellido)
+                            .addComponent(jLdni))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLciudad)
+                            .addComponent(jLdomicilio)
+                            .addComponent(jLtelefono, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(jTFtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLnombre)
-                                    .addComponent(jLapellido)
-                                    .addComponent(jLdni))
-                                .addGap(26, 26, 26)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTFapellido)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jTFdni, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addComponent(jTFnombre)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLciudad)
-                                    .addComponent(jLdomicilio)
-                                    .addComponent(jLtelefono))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTFtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCboxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTFdomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(89, 89, 89))))
+                                    .addComponent(jCboxCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTFdomicilio)
+                                    .addComponent(jTFapellido)
+                                    .addComponent(jTFnombre))
+                                .addContainerGap())))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 47, Short.MAX_VALUE)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(113, 113, 113)
@@ -149,6 +141,12 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(jSeparator7)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,12 +181,12 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLtelefono)
                     .addComponent(jTFtelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jBguardar)
-                    .addComponent(jBsalir))
+                    .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -212,19 +210,42 @@ public class AgregarCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBsalirActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
-        Long telefono = Long.parseLong(jTFtelefono.getText());
+    
+    try{  
+        if(jTFtelefono.getText().trim().isEmpty() 
+                || jTFdni.getText().trim().isEmpty() 
+                || jTFnombre.getText().trim().isEmpty() 
+                || jTFapellido.getText().trim().isEmpty() 
+                || jTFdomicilio.getText().trim().isEmpty() 
+                || jCboxCiudad.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los cambios");
+            return;
+        }
 
-    Contacto contacto = new Contacto(
-        Long.parseLong(jTFdni.getText()),
-        jTFnombre.getText(),
-        jTFapellido.getText(),
-        jCboxCiudad.getSelectedItem().toString(),
-        jTFdomicilio.getText()
-    );
-    directorio.agregarContacto(telefono, contacto);
+    Long telefono = Long.parseLong(jTFtelefono.getText().trim());
+    Long dni = Long.parseLong(jTFdni.getText().trim());
+    String nombre = jTFnombre.getText().trim();
+    String apellido = jTFapellido.getText().trim();
+    String ciudad = jCboxCiudad.getSelectedItem().toString();
+    String domicilio = jTFdomicilio.getText().trim();
+    
+    Contacto contacto = new Contacto(dni, nombre, apellido, ciudad, domicilio);
+    Menu.directorio.agregarContacto(telefono, contacto);
     JOptionPane.showMessageDialog(this, "Contacto agregado");
+    
+    jTFtelefono.setText("");
+    jTFdni.setText("");
+    jTFnombre.setText("");
+    jTFapellido.setText("");
+    jTFdomicilio.setText("");
+    jCboxCiudad.setSelectedIndex(-1);
+    
+    } catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Debe ingresar numeros.");
+    }
     }//GEN-LAST:event_jBguardarActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBguardar;

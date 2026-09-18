@@ -64,6 +64,7 @@ public class BuscarTelefonoPorApellido extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(jTdatos);
 
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(this::jBsalirActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -114,6 +115,11 @@ public class BuscarTelefonoPorApellido extends javax.swing.JInternalFrame {
     private void jTFapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFapellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFapellidoActionPerformed
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

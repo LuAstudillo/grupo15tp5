@@ -15,6 +15,15 @@ public class BusqClienteDirectorioPorCiudad extends javax.swing.JInternalFrame {
      */
     public BusqClienteDirectorioPorCiudad() {
         initComponents();
+        cargarComboCiudades();
+    }
+    
+    private void cargarComboCiudades(){
+        jCboxCiudades.removeAllItems();
+        for(String c : Menu.ciudades){
+            jCboxCiudades.addItem(c);
+        }
+        jCboxCiudades.setSelectedItem(-1);
     }
 
     /**
@@ -27,22 +36,23 @@ public class BusqClienteDirectorioPorCiudad extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLbuscarCliente = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jlCiudades = new javax.swing.JLabel();
         jCboxCiudades = new javax.swing.JComboBox<>();
         jBsalir = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablaCiudad = new javax.swing.JScrollPane();
         jTdatos = new javax.swing.JTable();
 
-        jLbuscarCliente.setFont(new java.awt.Font("MingLiU-ExtB", 1, 18)); // NOI18N
+        jLbuscarCliente.setFont(new java.awt.Font("MingLiU-ExtB", 1, 24)); // NOI18N
         jLbuscarCliente.setText("Buscar Clientes de Directorio por Ciudad");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Ciudades:");
+        jlCiudades.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlCiudades.setText("Ciudades:");
 
-        jCboxCiudades.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCboxCiudades.addItemListener(this::jCboxCiudadesItemStateChanged);
 
         jBsalir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jBsalir.setText("Salir");
+        jBsalir.addActionListener(this::jBsalirActionPerformed);
 
         jTdatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,30 +65,30 @@ public class BusqClienteDirectorioPorCiudad extends javax.swing.JInternalFrame {
                 "DNI", "Apellido", "Nombre", "Direccion", "Ciudad", "Telefono"
             }
         ));
-        jScrollPane1.setViewportView(jTdatos);
+        jTablaCiudad.setViewportView(jTdatos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jCboxCiudades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(17, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLbuscarCliente)
-                .addGap(83, 83, 83))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(37, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLbuscarCliente)
+                                .addGap(0, 18, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlCiudades)
+                                    .addComponent(jCboxCiudades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTablaCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -87,25 +97,50 @@ public class BusqClienteDirectorioPorCiudad extends javax.swing.JInternalFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jlCiudades)
                         .addGap(18, 18, 18)
                         .addComponent(jCboxCiudades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(jBsalir)
+                    .addComponent(jTablaCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jBsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jCboxCiudadesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCboxCiudadesItemStateChanged
+        // TODO add your handling code here:
+        if(jCboxCiudades.getSelectedItem() == null) return;
+            
+        String ciudad = jCboxCiudades.getSelectedItem().toString();
+        javax.swing.table.DefaultTableModel modelo = (javax.swing.table.DefaultTableModel) jTdatos.getModel();
+        modelo.setRowCount(0);
+        
+        for(Contacto c : Menu.directorio.buscarContactos(ciudad)){
+            Long telef = null;
+            for(Long t : Menu.directorio.getTelefonos()){
+                if(Menu.directorio.buscarContacto(t).equals(c)){
+                    telef = t;
+                    break;
+                }
+            }
+            modelo.addRow(new Object[]{c.getDni(), c.getApellido(), c.getNombre(), c.getDireccion(), c.getCiudad()});
+        }
+    }//GEN-LAST:event_jCboxCiudadesItemStateChanged
+
+    private void jBsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBsalirActionPerformed
+        // TODO add your handling code here:
+         dispose();
+    }//GEN-LAST:event_jBsalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBsalir;
     private javax.swing.JComboBox<String> jCboxCiudades;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLbuscarCliente;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jTablaCiudad;
     private javax.swing.JTable jTdatos;
+    private javax.swing.JLabel jlCiudades;
     // End of variables declaration//GEN-END:variables
 }

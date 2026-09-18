@@ -12,7 +12,7 @@ import java.awt.Color;
  */
 public class Menu extends javax.swing.JFrame {
     
-    //private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Menu.class.getName());
     public static Directorio directorio = new Directorio();
     public static java.util.TreeSet<String> ciudades = new java.util.TreeSet<>();
     
@@ -45,6 +45,7 @@ public class Menu extends javax.swing.JFrame {
         jMciudades = new javax.swing.JMenu();
         jItagregarCiudad = new javax.swing.JMenuItem();
         jMsalir = new javax.swing.JMenu();
+        jmSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 102, 153));
@@ -98,6 +99,12 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMciudades);
 
         jMsalir.setText("Salir");
+        jMsalir.addActionListener(this::jMsalirActionPerformed);
+
+        jmSalir.setText("Salir del menu");
+        jmSalir.addActionListener(this::jmSalirActionPerformed);
+        jMsalir.add(jmSalir);
+
         jMenuBar1.add(jMsalir);
 
         setJMenuBar(jMenuBar1);
@@ -128,7 +135,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jItAgClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jItAgClienteActionPerformed
         escritorio.removeAll();
-        AgregarCliente ac = new AgregarCliente(directorio);
+        AgregarCliente ac = new AgregarCliente();
         escritorio.add(ac);
         ac.setVisible(true);
         escritorio.moveToFront(ac);
@@ -182,6 +189,15 @@ public class Menu extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jItbusTelporApellidoActionPerformed
 
+    private void jMsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMsalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMsalirActionPerformed
+
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        // TODO add your handling code here:
+         dispose();
+    }//GEN-LAST:event_jmSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,5 +236,6 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMdirectorio;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMsalir;
+    private javax.swing.JMenuItem jmSalir;
     // End of variables declaration//GEN-END:variables
 }
